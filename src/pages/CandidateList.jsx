@@ -8,8 +8,8 @@ export default function CandidateList() {
 
   useEffect(()=>{
       let candidateService = new CandidateService()
-      candidateService.getCandidate().then(result=>setCandidates(result.data.data))
-  })  
+      candidateService.getAll().then(result=>setCandidates(result.data.data))
+  },[])  
   
   return (
     <div>

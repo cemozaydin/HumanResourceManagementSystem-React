@@ -1,15 +1,35 @@
-import React from "react";
-import { Button, Menu, Container, Icon, Image } from "semantic-ui-react";
-import UserProfile from "./UserProfile";
+import React, { useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import { Menu, Container, Icon, Image } from "semantic-ui-react";
+import SignedIn from "./SignedIn";
+import SignedOut from "./SignedOut";
+
 
 export default function Navi() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const history = useHistory();
+
+  function handleSignOut() {
+    setIsAuthenticated(false);
+    history.push("/");
+  }
+
+  function handleSignIn() {
+    setIsAuthenticated(true);
+  }
+
   return (
     <div>
-      <Menu fixed="top">
+      <Menu >
         <Container>
           <Menu.Item name="logo">
-            <Icon name="bullseye" color="green"></Icon>
-            <Image src={process.env.PUBLIC_URL + 'hrms_logo.png'} size="small"></Image>
+            <Icon name="bullseye" color="red"></Icon>
+            <Image
+              src="hrms_logo.png"
+              size="small"
+              href="/"
+            />
+           
           </Menu.Item>
           <Menu.Item name="searchjob">
             İş Ara &nbsp;
@@ -18,18 +38,15 @@ export default function Navi() {
           <Menu.Item name="profile"> Profil </Menu.Item>
           <Menu.Item name="resume"> Özgeçmişler </Menu.Item>
           <Menu.Item name="carrierguide"> Kariyer Rehberi </Menu.Item>
+          <Menu.Item name="addjobposting"><NavLink to="/jobposting/add">İş İlanı Ekle</NavLink></Menu.Item>
 
           <Menu.Menu position="right">
-            <Menu.Item name="userprofile">
-              <UserProfile></UserProfile>
-            </Menu.Item>
-
             <Menu.Item>
-              <Button.Group>
-                <Button primary>Üye Ol</Button>
-                <Button.Or />
-                <Button color="teal">Üye Girişi</Button>
-              </Button.Group>
+              {isAuthenticated ? (
+                <SignedIn signOut={handleSignOut} />
+              ) : (
+                <SignedOut signIn={handleSignIn} />
+              )}
             </Menu.Item>
           </Menu.Menu>
         </Container>

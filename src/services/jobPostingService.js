@@ -1,7 +1,17 @@
 import axios from "axios";
 
 export default class JobPostingService{
-    getJobPosting(){
-        return axios.get("http://localhost:8080/api/jobPostings/getJobPostingDetailsOrderByPostingReleaseDate")
+    getAllJobPosting(){
+        return axios.get("http://localhost:8080/api/jobPostings/getAllByIsActiveAndAdminApproved")
     }
+
+    getJobPostingDetailsById(id){
+     return axios.get("http://localhost:8080/api/jobPostings/getJobPostingById?id="+ id)
+    }
+
+   addJobPostings(values){
+       return axios.post("http://localhost:8080/api/jobPostings/add",values)
+   }
+
+
 }

@@ -1,7 +1,59 @@
 .App {
-  text-align: center;
+ text-align: center; 
+ background-color:rgb(245, 244, 244);
+ /* background-color: rgb(243, 243, 243); */
 }
 
-.ui.main.container{
-  margin-top: 10em;
+/* .editor{
+  color: whitesmoke;
+  width: 500px;
+  height: 400px;
+  margin-top: 10px;
+  word-wrap: inherit;
+} */
+
+body{
+  font-family: Roboto,'Open Sans';
 }
+
+/* .Filter {
+  text-align: left;
+}
+
+.Filter .Card {
+  margin-left: 1em;
+} */
+
+.ui.main.container{
+  margin-top: 3em;  
+}
+
+.ui.main.card{
+  text-align: left;
+  padding: 1em;
+  margin-right: -10px;
+  margin-left: -10px;
+  display: block!important;
+  border:0px!important;
+}
+
+.ui.table , tr, td {
+  border:0px!important;   
+}
+
+.ui.grid.column.right {
+  margin-top: 10px;
+ 
+}
+
+#cardColunm{
+margin-top: 10px;
+word-wrap: break-word;
+text-align: right;
+}
+
+ .Footer {
+   position:fixed;
+  text-align: center;
+  margin-top: 900px;
+} 
